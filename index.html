@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serin Pulikkottil Rejimon — Animal Science, Texas A&M</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&display=swap');
+
+  :root{
+    --bg: #EFEEE2;
+    --bg-raise: #F7F6EC;
+    --ink: #23281B;
+    --ink-soft: #565C4B;
+    --green: #3E5C39;
+    --green-deep: #2C4128;
+    --clay: #A56A31;
+    --slate: #4E6A76;
+    --line: #D6D2BE;
+    --max: 760px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Public Sans', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500;
+    line-height: 1.12;
+    margin: 0;
+    color: var(--green-deep);
+  }
+
+  a{ color: var(--green-deep); }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--clay);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .prose{ max-width: var(--max); }
+
+  /* ---------- header ---------- */
+  header.site{
+    padding: 28px 0 0;
+  }
+  .site-head-inner{
+    display:flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mark{
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.01em;
+  }
+  nav.primary{ display:flex; gap: 28px; }
+  nav.primary a{
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.94rem;
+  }
+  nav.primary a:hover{ color: var(--green-deep); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: center;
+    padding: 64px 0 76px;
+  }
+  .hero h1{
+    font-size: clamp(2.3rem, 4vw, 3.6rem);
+    letter-spacing: -0.01em;
+  }
+  .hero .role{
+    margin-top: 14px;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  .hero .lab{
+    margin-top: 6px;
+    font-size: 0.96rem;
+    color: var(--ink-soft);
+  }
+  .hero-figure{ width: 100%; }
+  .hero-figure svg{ width: 100%; height: auto; display:block; }
+
+  .loop-path{
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .loop-path{
+      stroke-dasharray: 900;
+      stroke-dashoffset: 900;
+      animation: draw 2.4s ease-out forwards;
+    }
+  }
+  @keyframes draw{ to{ stroke-dashoffset: 0; } }
+  .loop-dot{ fill: var(--bg-raise); stroke-width: 1.4; }
+  .loop-label{
+    font-family: 'Public Sans', sans-serif;
+    font-size: 10px;
+    fill: var(--ink-soft);
+  }
+
+  /* ---------- section scaffolding ---------- */
+  section{ padding: 56px 0; border-top: 1px solid var(--line); }
+  section:first-of-type{ border-top: none; }
+  .eyebrow{
+    font-size: 0.85rem;
+    color: var(--clay);
+    margin-bottom: 10px;
+  }
+  section h2{ font-size: 1.7rem; margin-bottom: 22px; }
+
+  /* ---------- about ---------- */
+  .about p{ margin: 0 0 16px; color: var(--ink); }
+  .about p:last-child{ margin-bottom: 0; }
+
+  /* ---------- focus grid ---------- */
+  .focus-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .focus-item{
+    padding: 20px 22px 20px 20px;
+    border-bottom: 1px solid var(--line);
+    border-left: 3px solid var(--green);
+  }
+  .focus-item:nth-child(even){ border-left-color: var(--slate); }
+  .focus-item h3{
+    font-size: 1.05rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .focus-item p{
+    margin:0;
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- projects (ledger) ---------- */
+  .ledger{ display: flex; flex-direction: column; }
+  .entry{
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 22px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .entry:first-child{ padding-top: 0; }
+  .entry:last-child{ border-bottom: none; }
+  .entry .tag{
+    font-size: 0.82rem;
+    color: var(--clay);
+    padding-top: 2px;
+  }
+  .entry h3{
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .entry p{ margin: 0 0 8px; color: var(--ink); font-size: 0.98rem; }
+  .entry .meta{
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- activity ---------- */
+  .activity{ display: flex; flex-direction: column; }
+  .activity-row{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.97rem;
+  }
+  .activity-row:last-child{ border-bottom: none; }
+  .activity-row .k{ color: var(--ink-soft); }
+
+  /* ---------- collaborators ---------- */
+  .collab-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px 32px;
+  }
+  .collab{
+    padding-left: 16px;
+    border-left: 2px solid var(--line);
+  }
+  .collab .name{ font-weight: 600; font-size: 0.99rem; }
+  .collab .role{ color: var(--ink-soft); font-size: 0.9rem; margin-top: 2px; }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding: 56px 0 60px;
+    border-top: 1px solid var(--line);
+  }
+  footer h2{ font-size: 1.5rem; margin-bottom: 14px; }
+  footer p{ color: var(--ink-soft); max-width: 52ch; }
+  .footnote{
+    margin-top: 40px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 780px){
+    .wrap{ padding: 0 20px; }
+    .hero{ grid-template-columns: 1fr; padding: 40px 0 48px; }
+    .hero-figure{ order: -1; max-width: 320px; margin: 0 auto; }
+    .focus-list{ grid-template-columns: 1fr; }
+    .entry{ grid-template-columns: 1fr; gap: 6px; }
+    .collab-list{ grid-template-columns: 1fr; }
+    nav.primary{ gap: 16px; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap site-head-inner">
+    <div class="mark">Serin Pulikkottil Rejimon</div>
+    <nav class="primary">
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#activity">Activity</a>
+      <a href="#collaborators">Collaborators</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap hero">
+    <div>
+      <h1>Modeling the beef supply chain as one connected system.</h1>
+      <p class="role">PhD candidate in Animal Science at Texas A&amp;M University, working on precision livestock farming, greenhouse gas and methane emissions modeling, nitrogen use efficiency, carbon accounting, and system dynamics.</p>
+      <p class="lab">AI Lab for Sustainable Livestock Systems — advised by Dr. Karun Kaniyamattam</p>
+    </div>
+    <div class="hero-figure" aria-hidden="true">
+      <svg viewBox="0 0 360 340" xmlns="http://www.w3.org/2000/svg">
+        <path class="loop-path" stroke="#3E5C39" d="M180 60 C 260 60, 300 110, 290 170 C 280 235, 220 270, 180 265" />
+        <path class="loop-path" stroke="#4E6A76" d="M180 265 C 130 260, 90 225, 90 170" />
+        <path class="loop-path" stroke="#A56A31" d="M90 170 C 90 110, 130 65, 180 60" />
+        <path class="loop-path" stroke="#3E5C39" d="M180 95 C 225 100, 250 130, 248 168" />
+        <path class="loop-path" stroke="#4E6A76" d="M248 168 C 246 205, 218 228, 182 232" />
+        <path class="loop-path" stroke="#A56A31" d="M182 232 C 145 228, 120 202, 122 168" />
+        <path class="loop-path" stroke="#3E5C39" d="M122 168 C 122 132, 148 102, 180 95" />
+        <circle class="loop-dot" cx="180" cy="60" r="4" stroke="#3E5C39"/>
+        <circle class="loop-dot" cx="290" cy="170" r="4" stroke="#3E5C39"/>
+        <circle class="loop-dot" cx="180" cy="265" r="4" stroke="#4E6A76"/>
+        <circle class="loop-dot" cx="90" cy="170" r="4" stroke="#A56A31"/>
+        <text class="loop-label" x="180" y="46">R1</text>
+        <text class="loop-label" x="300" y="172">R3</text>
+        <text class="loop-label" x="165" y="290">B1 · carbon market</text>
+        <text class="loop-label" x="52" y="172">R6</text>
+      </svg>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap prose about">
+      <p class="eyebrow">About</p>
+      <p>My work sits at the intersection of animal science and data science: taking beef production systems apart into their feed, emissions, water, and economic loops, and rebuilding them as models that a producer or policymaker can actually act on. That means predicting enteric methane and manure emissions with machine learning, tracing causal loops through a carbon-neutral cattle operation, and building decision-support dashboards that survive contact with real farm data.</p>
+      <p>I hold a long-standing research affiliation with both Texas A&amp;M and the University of Pretoria's Precision Livestock Farming program, and I work across Python, Vensim system dynamics, and document/reporting pipelines to move research from dataset to publication to something a collaborator can open and use.</p>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap">
+      <p class="eyebrow">Research focus</p>
+      <h2>Six threads, one supply chain</h2>
+      <div class="focus-list">
+        <div class="focus-item">
+          <h3>Precision livestock farming</h3>
+          <p>Sensor and data-driven decision support for day-to-day herd management.</p>
+        </div>
+        <div class="focus-item">
+          <h3>Methane &amp; GHG emissions modeling</h3>
+          <p>Predicting enteric methane, manure N₂O, and soil carbon sequestration from herd and diet data.</p>
+        </div>
+        <div class="focus-item">
+          <h3>Machine learning in animal science</h3>
+          <p>Model comparison and SHAP interpretability on livestock and emissions datasets.</p>
+        </div>
+        <div class="focus-item">
+          <h3>Nitrogen use efficiency</h3>
+          <p>Decision support for nitrogen utilization in Gulf watershed beef systems.</p>
+        </div>
+        <div class="focus-item">
+          <h3>Carbon accounting</h3>
+          <p>State-level GHG baselines for Texas beef grazing systems.</p>
+        </div>
+        <div class="focus-item">
+          <h3>System dynamics</h3>
+          <p>Causal loop diagrams and Vensim models of cattle population, feed efficiency, and emissions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <p class="eyebrow">Current work</p>
+      <h2>Projects &amp; proposals</h2>
+      <div class="ledger">
+
+        <div class="entry">
+          <div class="tag">Grant proposal</div>
+          <div>
+            <h3>Information and Institutional Frictions in the Diffusion of Digital Livestock Technologies</h3>
+            <p>STEG PhD Research Grant studying why AI-enabled livestock decision-support dashboards spread unevenly across Ethiopia, Nigeria, and South Africa — building on the South African beef GHG dashboard as the tool under study.</p>
+            <div class="meta">PI: Dr. Karun Kaniyamattam · TAMU budget worksheet SRS #2615033 · Jan–May 2027</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="tag">Grant proposal</div>
+          <div>
+            <h3>AI-Driven Decision Support for Nitrogen Utilization Efficiency in Gulf Watershed Beef Systems</h3>
+            <p>EPA Farmer-to-Farmer grant proposal (FON EPA-I-R4-GAD-2025-FARMER) with an 11-page project narrative and a Scientific Data Management Plan.</p>
+            <div class="meta">PI: Dr. Karun Kaniyamattam · SDSU subrecipient · five-year budget, $2.5M cap</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="tag">Grant proposal</div>
+          <div>
+            <h3>Ecological Economics of Beef Production in Texas</h3>
+            <p>A systems-informed machine learning and decision support framework, proposed under a TPT Collaborative Seed Grant with a team spanning agricultural economics, animal science, and computer science.</p>
+            <div class="meta">Texas Beef Decision Support Dashboard</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="tag">Manuscript</div>
+          <div>
+            <h3>Pathways for Sustainable Production in the Integrated U.S. Beef Supply Chain</h3>
+            <p>Organized around three E's — emission reduction, economic returns, ease of adoption — with active drafting on grazing and water management, incorporating post-2020 US-specific sources and blue/green water framing.</p>
+            <div class="meta">Targeting Sustainable Production and Consumption (Elsevier) · with Dr. Hector Menendez, Dr. Luis Tedeschi, Dr. Karun Kaniyamattam</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="tag">ML pipeline</div>
+          <div>
+            <h3>South African beef cattle GHG modeling</h3>
+            <p>Three models predicting enteric CH₄, manure N₂O, and soil carbon sequestration from a 10,000-record, 41-variable dataset, delivered as a Streamlit dashboard and a standalone web dashboard with 16 IPCC equations and mitigation sliders for 3-NOP, Asparagopsis, and Moringa.</p>
+            <div class="meta">With Srikar Veeranki, Hiya Sharma, Keshav Vidjeabhaskaran</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="tag">ML pipeline</div>
+          <div>
+            <h3>Methane yield prediction (CH₄/DMI)</h3>
+            <p>Seven models tested on a 251-sample literature dataset with SHAP interpretability; Gradient Boosting performed best (test R² = 0.54), with NDF, DMI, and measurement method as the top drivers.</p>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="tag">Systems paper</div>
+          <div>
+            <h3>A carbon-neutral, 1,000-cow beef operation</h3>
+            <p>A systems thinking paper built on causal loop diagrams — seven reinforcing loops and one balancing loop (carbon market), plus four system archetypes, framed as a 25-year narrative.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="activity">
+    <div class="wrap prose">
+      <p class="eyebrow">Recent activity</p>
+      <h2>Conferences, service, teaching</h2>
+      <div class="activity">
+        <div class="activity-row"><span class="k">Conference:</span> Confirmed attendance at ISDC 2026 in Delft; tracking EAAP Hamburg, ECPLF Valencia, ICoMST Daejeon, and AAAP Hanoi as target venues.</div>
+        <div class="activity-row"><span class="k">Peer review:</span> Reviewed a precision livestock farming manuscript on pig weight estimation for Smart Agricultural Technology.</div>
+        <div class="activity-row"><span class="k">Funding:</span> Working on the Hood Family Center FY26 grant proposal ($15,000, system dynamics focus) and a 14-award fellowship tracker prioritizing the TAMU Dissertation Fellowship, TAMU System Graduate Fellowships, Schlumberger Faculty for the Future, and AAUW International Fellowships.</div>
+        <div class="activity-row"><span class="k">Teaching:</span> Syllabus development for ANSC 691.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="collaborators">
+    <div class="wrap">
+      <p class="eyebrow">People</p>
+      <h2>Advisor &amp; collaborators</h2>
+      <div class="collab-list">
+        <div class="collab">
+          <div class="name">Dr. Karun Kaniyamattam</div>
+          <div class="role">PhD advisor, Texas A&amp;M University</div>
+        </div>
+        <div class="collab">
+          <div class="name">Dr. Luis Tedeschi</div>
+          <div class="role">Research collaborator, Texas A&amp;M University</div>
+        </div>
+        <div class="collab">
+          <div class="name">Dr. Hector Menendez</div>
+          <div class="role">Research collaborator, South Dakota State University</div>
+        </div>
+        <div class="collab">
+          <div class="name">Srikar Veeranki, Hiya Sharma, Keshav Vidjeabhaskaran</div>
+          <div class="role">Teammates, South African beef GHG modeling</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Get in touch</h2>
+    <p>Based in College Station, Texas, with the AI Lab for Sustainable Livestock Systems at Texas A&amp;M University. For inquiries, reach out through the TAMU Department of Animal Science.</p>
+    <p class="footnote">Serin Pulikkottil Rejimon — PhD Candidate, Animal Science, Texas A&amp;M University</p>
+  </div>
+</footer>
+
+</body>
+</html>
